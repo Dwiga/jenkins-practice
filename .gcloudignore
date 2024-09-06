@@ -1,0 +1,6 @@
+__pycache__
+.parcel-cache
+.pytest_cache
+.venv
+node_modules
+.gcloudignore
