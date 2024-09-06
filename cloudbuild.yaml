@@ -5,6 +5,8 @@ steps:
     - name: python
       entrypoint: python
       args: ['-m', 'pip', 'install', '-r', 'requirements.txt', '--user']
+    - name: "test"
+      entrypoint: pytest
     - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
       entrypoint: 'bash'
       args: ['-c', 'gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy']
