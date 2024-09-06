@@ -1,0 +1,23 @@
+{
+  "name": "jenkins-practice",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "parcel build",
+    "dev": "parcel watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "source": [
+    "src/css/main.css",
+    "src/js/main.js"
+  ],
+  "targets": {
+    "default": {
+      "distDir": "./static"
+    }
+  },
+  "dependencies": {
+    "parcel": "^2.12.0"
+  }
+}
