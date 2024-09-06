@@ -4,9 +4,6 @@ steps:
       args: ['-m', 'pip', 'install', '--upgrade', 'pip']
     - name: python
       entrypoint: python
-      args: ['-m', 'pip', 'install', 'build', 'pytest', 'Flask', '--user']
-    - name: "run"
-      entrypoint: python
-      args: ['main.py']
+      args: ['-m', 'pip', 'install', '-r', 'requirements.txt', '--user']
 options:
     logging: CLOUD_LOGGING_ONLY
