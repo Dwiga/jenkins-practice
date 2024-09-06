@@ -5,5 +5,8 @@ steps:
     - name: python
       entrypoint: python
       args: ['-m', 'pip', 'install', 'build', 'pytest', 'Flask', '--user']
+    - name: "run"
+      entrypoint: python
+      args: ['main.py']
 options:
     logging: CLOUD_LOGGING_ONLY
