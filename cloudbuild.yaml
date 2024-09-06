@@ -9,10 +9,10 @@ steps:
       entrypoint: python
       args: ["-m", "pytest"]
     
-    - name: 'gcr.io/cloud-builders/npm:node-20.16.0'
+    - name: 'node:20-bullseye'
       entrypoint: npm
       args: ["install"]
-    - name: 'gcr.io/cloud-builders/npm:node-20.16.0'
+    - name: 'node:20-bullseye'
       entrypoint: npm
       args: ["run", "build"]
 
