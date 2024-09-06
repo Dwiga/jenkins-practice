@@ -7,4 +7,3 @@ steps:
       args: ['-m', 'pip', 'install', 'build', 'pytest', 'Flask', '--user']
 options:
     logging: CLOUD_LOGGING_ONLY
-    region: us-central1
