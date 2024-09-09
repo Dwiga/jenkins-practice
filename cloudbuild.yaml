@@ -1,4 +1,11 @@
 steps:
+    - name: 'gcr.io/cloud-builders/gcloud'
+      entrypoint: 'bash'
+      args:
+      - '-c'
+      - |
+        [[ "$BRANCH_NAME" != "master" ]] && git rebase master || echo fail && true
+
     - name: 'python'
       entrypoint: 'python'
       args: ['-m', 'pip', 'install', '--upgrade', 'pip']
@@ -18,7 +25,7 @@ steps:
 
     - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
       entrypoint: 'bash'
-      args: ['-c', 'gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy']
+      args: ['-c', '[[ "$BRANCH_NAME" == "master" ]] && gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy || echo fail && true']
       timeout: '1600s'
 options:
     logging: CLOUD_LOGGING_ONLY
