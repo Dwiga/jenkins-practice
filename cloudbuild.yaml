@@ -27,5 +27,19 @@ steps:
       entrypoint: 'bash'
       args: ['-c', '[[ "$BRANCH_NAME" == "main" ]] && gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy || echo fail && true']
       timeout: '1600s'
+    
+    - name: 'gcr.io/cloud-builders/gcloud'
+      id: Connect to instance
+      entrypoint: /bin/sh
+      args:
+      - '-c'
+      - |
+        mkdir -p ~/root/.ssh && \\
+        gcloud secrets versions access latest --secret=cloud-build-ssh-key > ~/root/.ssh/revm && \\
+        chmod 600 ~/root/.ssh/revm && \\
+        gcloud secrets versions access latest --secret=cloud-build-ssh-key-pub > ~/root/.ssh/revm.pub && \\
+        chmod 600 ~/root/.ssh/revm.pub && \\
+        set -x && \\
+        gcloud compute ssh revm --ssh-key-file=~/root/.ssh/revm --zone=us-central1-b
 options:
     logging: CLOUD_LOGGING_ONLY
