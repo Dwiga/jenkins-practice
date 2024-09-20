@@ -30,7 +30,7 @@ steps:
     
     - name: 'gcr.io/cloud-builders/gcloud'
       id: Connect to instance
-      entrypoint: /bin/sh
+      entrypoint: 'bash'
       args:
       - '-c'
       - |
